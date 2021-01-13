@@ -41,7 +41,7 @@ class Solution:
         """
 
         """-----> O(nlogn), O(1)
-        迭代的化，空间复杂度就会是 O(logn)
+        迭代的化，空间复杂度就会是 O(1)
         """
         def split(head, step):
             if not head: return
