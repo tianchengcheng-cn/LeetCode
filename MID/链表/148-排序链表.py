@@ -17,6 +17,7 @@ class ListNode:
         self.next = next
 class Solution:
     def sortList(self, head: ListNode) -> ListNode:
+        """ -----> O(nlogn),  O(logn)
         if not head or not head.next: return head
 
         slow, fast = head, head.next
@@ -37,3 +38,58 @@ class Solution:
         h.next = left if left else right
 
         return res.next
+        """
+
+        """-----> O(nlogn), O(1)
+        迭代的化，空间复杂度就会是 O(logn)
+        """
+        def split(head, step):
+            if not head: return
+
+            cur = head
+            while step and cur.next:
+                cur = cur.next
+                step -= 1
+            right = cur.next
+            cur.next = None
+            return right
+
+        def merge(left, right):
+            dummy = ListNode(0)
+            cur = dummy
+            while left and right:
+                if left.val < right: cur.next, left = left, left.next
+                else: cur.next, right = right, right.next
+                cur = cur.next
+            cur.next = left if left else right
+            return dummy.next
+        
+        def getLength(head):
+            length = 1
+            cur = head
+            while cur:
+                cur = cur.next
+                length += 1
+            return length
+
+        length = getLength(head)
+        step = 1
+        
+        while (step < length):
+            dummy = ListNode(0)
+            dummy.next = head
+            slow, fast = dummy, dummy.next
+            while (fast):
+                head1 = fast
+                head2 = split(head=head1, step=step)
+                temp = merge(head1, head2)
+                fast = split(head=head2, step=step)
+                slow.next = temp
+                while (slow.next):
+                    slow = slow.next
+            step *= 2
+        return dummy.next
+        
+
+
+            
