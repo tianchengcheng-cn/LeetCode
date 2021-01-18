@@ -6,6 +6,7 @@
 输出: 3
 解释: 节点 5 和节点 1 的最近公共祖先是节点 3。
 
+时空复杂度：O(n) O(n)
 """
 
 # Definition for a binary tree node.
