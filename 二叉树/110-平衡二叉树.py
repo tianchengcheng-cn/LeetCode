@@ -39,5 +39,5 @@ class Solution:
             if leftHeight == -1 or rightHeight == -1 or abs(leftHeight - rightHeight) > 1:
                 return -1
             else:
-                return max(height(leftHeight), height(rightHeight)) + 1
+                return max(leftHeight, rightHeight) + 1
         return height(root) >= 0
