@@ -58,7 +58,7 @@ class Solution:
             dummy = ListNode(0)
             cur = dummy
             while left and right:
-                if left.val < right: cur.next, left = left, left.next
+                if left.val < right.val: cur.next, left = left, left.next
                 else: cur.next, right = right, right.next
                 cur = cur.next
             cur.next = left if left else right
