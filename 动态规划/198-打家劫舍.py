@@ -17,6 +17,9 @@ class Solution:
         if not nums:
             return 0
         size = len(nums)
+        if size == 1:
+            return nums[0]
+            
         dp = [0] * size
 
         dp[0] = nums[0]
